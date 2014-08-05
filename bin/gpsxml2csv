@@ -1,0 +1,23 @@
+require 'nokogiri'
+require 'set'
+ELEM = Nokogiri::XML::Reader::TYPE_ELEMENT
+
+file = ARGV[0]
+rounding = ARGV[1] ? ARGV[1].to_i : 6
+
+reader = Nokogiri::XML::Reader.from_io File.open(file)
+
+points = {}
+
+reader.each do |node|
+  next unless node.name == "gps-point" && node.node_type == ELEM
+  lat = node.attribute("lat").to_f.round(rounding)
+  long = node.attribute("lon").to_f.round(rounding)
+  key = [lat,long].join(",")
+  points[key] = Set.new if points[key].nil?
+  points[key].add node.attribute("bssid")
+end
+
+points.each do |point,set|
+  puts [point, set.size].join(",")
+end
