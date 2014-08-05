@@ -14,12 +14,12 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "kismet-gpsxml2csv"
-  gem.homepage = "http://github.com/colindean/kismet-gpsxml2csv"
+  gem.name = "kismet-gpsxml"
+  gem.homepage = "http://github.com/pittmesh/kismet-gpsxml"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "git@cad.cx"
+  gem.summary = %Q{A quick solution to model Kismet-generated gpsxml log files and output to CSV}
+  gem.description = gem.summary
+  gem.email = "colin.dean@metamesh.org"
   gem.authors = ["Colin Dean"]
   # dependencies defined in Gemfile
 end
@@ -45,7 +45,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "kismet-gpsxml2csv #{version}"
+  rdoc.title = "kismet-gpsxml #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

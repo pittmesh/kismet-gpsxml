@@ -1,6 +1,10 @@
-= kismet-gpsxml2csv
+= kismet-gpsxml
 
-Description goes here.
+This gem enables users to model Kismet's gpsxml log format in Ruby.
+
+It provides a series of helper executables for doing things such as extracting
+the bssid and points, and counting the number of bssids within a certain
+vicinity.
 
 == Contributing to kismet-gpsxml2csv
  
@@ -14,6 +18,5 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2014 Colin Dean. See LICENSE.txt for
-further details.
+Copyright (c) 2014 Meta Mesh, LLC. See LICENSE.txt for further details.
 
