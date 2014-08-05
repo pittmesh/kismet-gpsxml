@@ -6,7 +6,7 @@ It provides a series of helper executables for doing things such as extracting
 the bssid and points, and counting the number of bssids within a certain
 vicinity.
 
-== Contributing to kismet-gpsxml2csv
+== Contributing to kismet-gpsxml
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
