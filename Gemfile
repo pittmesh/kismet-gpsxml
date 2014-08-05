@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "nokogiri", ">= 0"
+gem "nokogiri", "~> 1.6.3.0"
 
 group :development do
   gem "shoulda", ">= 0"

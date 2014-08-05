@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'nokogiri'
 require 'set'
 ELEM = Nokogiri::XML::Reader::TYPE_ELEMENT
