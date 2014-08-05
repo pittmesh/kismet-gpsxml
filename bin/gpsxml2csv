@@ -2,6 +2,8 @@ require 'nokogiri'
 require 'set'
 ELEM = Nokogiri::XML::Reader::TYPE_ELEMENT
 
+$stderr.puts "Usage: #{__FILE__} logfile.gpsxml [rounding-level]\nDefault rounding-level is 6 decimal places.";exit 1 unless ARGV[0]
+
 file = ARGV[0]
 rounding = ARGV[1] ? ARGV[1].to_i : 6
 
