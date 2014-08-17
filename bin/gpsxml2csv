@@ -1,27 +1,21 @@
 #!/usr/bin/env ruby
 
-require 'nokogiri'
-require 'set'
-ELEM = Nokogiri::XML::Reader::TYPE_ELEMENT
+require './lib/kismet-gpsxml'
+
 DEFAULT_ROUNDING = 4
 
-$stderr.puts "Usage: #{__FILE__} logfile.gpsxml [rounding-level]\nDefault rounding-level is #{DEFAULT_ROUNDING} decimal places.";exit 1 unless ARGV[0]
+unless ARGV[0]
+  $stderr.puts "Usage: #{__FILE__} logfile.gpsxml [rounding-level]\nDefault rounding-level is #{DEFAULT_ROUNDING} decimal places."
+  exit 1
+end
 
 file = ARGV[0]
 rounding = ARGV[1] ? ARGV[1].to_i : DEFAULT_ROUNDING
 
-reader = Nokogiri::XML::Reader.from_io File.open(file)
+reader = Kismet::GPSXML::Reader.from_io File.open(file)
+reader.rounding = rounding
 
-points = {}
-
-reader.each do |node|
-  next unless node.name == "gps-point" && node.node_type == ELEM
-  lat = node.attribute("lat").to_f.round(rounding)
-  long = node.attribute("lon").to_f.round(rounding)
-  key = [lat,long].join(",")
-  points[key] = Set.new if points[key].nil?
-  points[key].add node.attribute("bssid")
-end
+points = reader.points
 
 points.each do |point,set|
   puts [point, set.size].join(",")
