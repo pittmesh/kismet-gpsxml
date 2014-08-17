@@ -8,16 +8,18 @@ end
 
 class Kismet::GPSXML::Reader
 
+  private_class_method :new
+
   attr_reader :reader
   attr_accessor :rounding
+
+  def self.from_io io
+    new Nokogiri::XML::Reader.from_io(io)
+  end
 
   def initialize xml_reader
     @reader = xml_reader
     @rounding = 4
-  end
-
-  def self.from_io io
-    self.new Nokogiri::XML::Reader.from_io(io)
   end
 
   def points
@@ -32,6 +34,8 @@ class Kismet::GPSXML::Reader
     end
     points
   end
+
+  private
 
   def interesting_node? node
     node.name == "gps-point" &&

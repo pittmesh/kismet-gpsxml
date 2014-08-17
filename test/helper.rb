@@ -8,7 +8,7 @@ end
 
 SimpleCov.configure do
   clean_filters
-  load_adapter 'test_frameworks'
+  load_profile 'test_frameworks'
 end
 
 ENV["COVERAGE"] && SimpleCov.start do
@@ -23,12 +23,14 @@ rescue Bundler::BundlerError => e
   $stderr.puts "Run `bundle install` to install missing gems"
   exit e.status_code
 end
-require 'test/unit'
-require 'shoulda'
+require 'minitest/spec'
+require 'minitest/spec/expect'
+require 'minitest/autorun'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'kismet-gpsxml2csv'
+require 'kismet-gpsxml'
 
-class Test::Unit::TestCase
+def test_xml_location
+  File.join [File.dirname(__FILE__), "test.xml"]
 end

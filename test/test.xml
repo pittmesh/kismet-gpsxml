@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE gps-run SYSTEM "http://kismetwireless.net/kismet-gps-2.9.1.dtd">
+
+<gps-run gps-version="5" start-time="Sun Jun 29 16:27:04 2014">
+
+    <network-file>Kismet-20140629-16-27-04-1.netxml</network-file>
+
+    <gps-point bssid="54:BE:F7:99:89:78" source="54:BE:F7:99:89:78" time-sec="1404073624" time-usec="698754" lat="40.429444" lon="-79.970444" spd="0.185000" heading="309.760010" fix="3" alt="223.399994" signal_dbm="-79" noise_dbm="0"/>
+    <gps-point bssid="A0:21:B7:74:EF:0B" source="A0:21:B7:74:EF:0B" time-sec="1404073624" time-usec="705437" lat="40.429555" lon="-79.970555" spd="0.185000" heading="309.760010" fix="3" alt="223.399994" signal_dbm="-72" noise_dbm="0"/>
+    <gps-point bssid="74:BF:33:11:BB:AA" source="74:BF:33:11:BB:AA" time-sec="1404073624" time-usec="698754" lat="40.429499" lon="-79.970999" spd="0.185000" heading="309.760010" fix="3" alt="223.399994" signal_dbm="-79" noise_dbm="0"/>
+    <gps-point bssid="00:06:B1:22:51:F9" source="00:06:B1:22:51:F9" time-sec="1404073624" time-usec="734943" lat="40.430000" lon="-79.980000" spd="0.185000" heading="309.760010" fix="3" alt="223.399994" signal_dbm="-83" noise_dbm="0"/>
+    <gps-point bssid="00:00:00:00:00:00" source="00:00:00:00:00:00" time-sec="1404073624" time-usec="734943" lat="40.430000" lon="-79.980000" spd="0.185000" heading="309.760010" fix="3" alt="223.399994" signal_dbm="-83" noise_dbm="0"/>
+</gps-run>
