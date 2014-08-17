@@ -1,6 +1,8 @@
 kismet-gpsxml
 =============
 
+[![Travis-CI status](http://img.shields.io/travis/pittmesh/kismet-gpsxml.svg)](https://travis-ci.org/pittmesh/kismet-gpsxml/)
+
 This gem enables users to model Kismet's gpsxml log format in Ruby.
 
 It provides a series of helper executables for doing things such as extracting
