@@ -56,7 +56,7 @@ class Kismet::GPSXML::Reader
 
   def interesting_gpsxml_node? node
     is_gpspoint?(node) &&
-    node.attribute("bssid") != "00:00:00:00:00:00"
+    !undesirable_node?(node)
   end
 
   def undesirable_node? node
