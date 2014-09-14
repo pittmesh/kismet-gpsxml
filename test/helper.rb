@@ -34,3 +34,7 @@ require 'kismet-gpsxml'
 def test_xml_location
   File.join [File.dirname(__FILE__), "test.xml"]
 end
+
+def test_write_location extra=""
+  File.join [File.dirname(__FILE__), "test_output#{extra}.xml"]
+end

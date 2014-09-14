@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'kismet-gpsxml'
+
+unless ARGV[0]
+  $stderr.puts "Usage: #{__FILE__} logfile.gpsxml > output.gpsxml"
+  exit 1
+end
+
+file = ARGV[0]
+
+reader = Kismet::GPSXML::Reader.from_io File.open(file)
+
+count = reader.write_interesting_nodes_to_file STDOUT
+
+$stderr.puts "\n#{count} gps-point written."
