@@ -29,7 +29,7 @@ class Kismet::GPSXML::Reader
       point = point_info node
       lat, lon, bssid = point.values
       key = [lat,lon].join(",")
-      points[key] = Set.new if points[key].nil?
+      points[key] = SortedSet.new if points[key].nil?
       points[key].add bssid
     end
     points
