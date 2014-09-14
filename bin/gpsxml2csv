@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/kismet-gpsxml'
+require 'kismet-gpsxml'
 
 DEFAULT_ROUNDING = 4
 
