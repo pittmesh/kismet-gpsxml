@@ -48,3 +48,5 @@ pkg
 # For rubinius:
 #*.rbc
 Gemfile.lock
+test/test_output-second.xml
+test/test_output.xml
