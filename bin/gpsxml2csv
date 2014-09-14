@@ -5,7 +5,9 @@ require 'kismet-gpsxml'
 DEFAULT_ROUNDING = 4
 
 unless ARGV[0]
-  $stderr.puts "Usage: #{__FILE__} logfile.gpsxml [rounding-level]\nDefault rounding-level is #{DEFAULT_ROUNDING} decimal places."
+  $stderr.puts "Usage: #{__FILE__} logfile.gpsxml [rounding-level]"
+  $stderr.puts "Default rounding-level is #{DEFAULT_ROUNDING} decimal places."
+  $stderr.puts "Set GPSXML_OUTPUT_XML if you want the output to be XML."
   exit 1
 end
 
@@ -17,6 +19,18 @@ reader.rounding = rounding
 
 bssids = reader.bssids_by_lat_long
 
-bssids.each do |point,set|
-  puts [point, set.size].join(",")
+unless ENV['GPSXML_OUTPUT_XML']
+  bssids.each do |point,set|
+    puts [point, set.size].join(",")
+  end
+else
+  puts '<points input="%s" >' % File.basename(file)
+  bssids.each do |point,set|
+    puts '<point coord="%s" count="%d">' % [point, set.size]
+    set.each do |bssid|
+      puts '<bssid>%s</bssid>' % bssid
+    end
+    puts '</point>'
+  end
+  puts "</points>"
 end
