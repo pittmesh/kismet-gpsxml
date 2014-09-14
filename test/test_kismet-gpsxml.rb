@@ -9,7 +9,7 @@ describe Kismet::GPSXML::Reader do
     end
 
     it "responds to points" do
-      subject.public_instance_methods.must_include :points
+      subject.public_instance_methods.must_include :bssids_by_lat_long
       # subject.must_respond_to :points # this doesn't work on classes, just instances
     end
 
@@ -27,15 +27,15 @@ describe Kismet::GPSXML::Reader do
     end
 
     it "retrieves points" do
-      @reader.points.wont_be_empty
+      @reader.bssids_by_lat_long.wont_be_empty
     end
 
     it "retrieves the expected number of points" do
-      @reader.points.size.must_equal 4 # one should be filtered out
+      @reader.bssids_by_lat_long.size.must_equal 4 # one should be filtered out
     end
 
     it "filters bssid = 00:00:00:00:00:00" do
-      points_with_bad_bssid = @reader.points.select{|position,bssid| bssid == '00:00:00:00:00:00'}
+      points_with_bad_bssid = @reader.bssids_by_lat_long.select{|position,bssid| bssid == '00:00:00:00:00:00'}
       points_with_bad_bssid.must_be_empty
     end
 

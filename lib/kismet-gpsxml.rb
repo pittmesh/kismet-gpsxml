@@ -22,7 +22,7 @@ class Kismet::GPSXML::Reader
     @rounding = 4
   end
 
-  def points
+  def bssids_by_lat_long
     points = {}
     reader.each do |node|
       next unless interesting_node? node
@@ -38,8 +38,8 @@ class Kismet::GPSXML::Reader
   private
 
   def interesting_node? node
-    node.name == "gps-point" &&
     node.node_type == Nokogiri::XML::Reader::TYPE_ELEMENT &&
+    node.name == "gps-point" &&
     node.attribute("bssid") != "00:00:00:00:00:00"
   end
 

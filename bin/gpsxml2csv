@@ -15,8 +15,8 @@ rounding = ARGV[1] ? ARGV[1].to_i : DEFAULT_ROUNDING
 reader = Kismet::GPSXML::Reader.from_io File.open(file)
 reader.rounding = rounding
 
-points = reader.points
+bssids = reader.bssids_by_lat_long
 
-points.each do |point,set|
+bssids.each do |point,set|
   puts [point, set.size].join(",")
 end
