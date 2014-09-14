@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "nokogiri", "~> 1.6.3.0"
+gem 'oga', '~> 0.1.1'
 
 group :development do
   gem "rdoc", "~> 3.12"

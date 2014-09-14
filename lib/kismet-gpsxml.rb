@@ -1,4 +1,4 @@
-require 'nokogiri'
+require 'oga'
 require 'set'
 
 module Kismet
@@ -14,7 +14,7 @@ class Kismet::GPSXML::Reader
   attr_accessor :rounding
 
   def self.from_io io
-    new Nokogiri::XML::Reader.from_io(io)
+    new ::Oga::XML::PullParser.new(io)
   end
 
   def initialize xml_reader
@@ -24,7 +24,7 @@ class Kismet::GPSXML::Reader
 
   def points
     points = {}
-    reader.each do |node|
+    reader.parse do |node|
       next unless interesting_node? node
       point = point_info node
       lat, lon, bssid = point.values
@@ -38,14 +38,14 @@ class Kismet::GPSXML::Reader
   private
 
   def interesting_node? node
+    node.class == ::Oga::XML::Element &&
     node.name == "gps-point" &&
-    node.node_type == Nokogiri::XML::Reader::TYPE_ELEMENT &&
     node.attribute("bssid") != "00:00:00:00:00:00"
   end
 
   def point_info node
-    {lat: node.attribute("lat").to_f.round(rounding),
-     lon: node.attribute("lon").to_f.round(rounding),
+    {lat: node.attribute("lat").value.to_f.round(rounding),
+     lon: node.attribute("lon").value.to_f.round(rounding),
      bssid: node.attribute("bssid")}
   end
 end
